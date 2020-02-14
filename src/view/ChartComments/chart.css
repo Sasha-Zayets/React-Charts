@@ -1,0 +1,41 @@
+.chart-comments {
+    width: 350px !important;
+    min-height: initial !important;
+    height: auto;
+    margin: 0 auto 20px auto;
+}
+
+.generate-button {
+    height: 40px;
+    border-radius: 4px;
+    border: none;
+    background-color: #269ffb;
+    color: white;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    margin: 0 auto;
+    transition: all .3s;
+}
+
+.generate-button:hover {
+    background-color: #228dde;
+}
+
+.back-block {
+    margin-top: 30px;
+    text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+    .chart-comments {
+        width: 500px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .chart-comments {
+        width: 650px !important;
+    }
+}

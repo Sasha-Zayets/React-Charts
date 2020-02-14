@@ -1,0 +1,18 @@
+.home-page {
+    text-align: center;
+}
+
+.home-link {
+    color: black;
+    transition: all .3s;
+    margin-right: 25px;
+}
+
+.home-link:hover {
+    color: #15215a;
+    text-decoration: none;
+}
+
+.home-link:last-child {
+    margin-right: 0;
+}
