@@ -1,21 +1,25 @@
-import { generateData } from '../helpers/generateUserData';
-import { generateCommentsData, randomData, randomCategories } from '../helpers/generateCommentsData';
+import { generateData } from "../helpers/generateUserData";
+import {
+  generateCommentsData,
+  randomData,
+  randomCategories
+} from "../helpers/generateCommentsData";
 
 export const setCategoryUser = payload => ({
-    type: 'SET_CATEGORY_USER',
-    payload
+  type: "SET_CATEGORY_USER",
+  payload
 });
 
 export const setDataUser = payload => ({
-    type: 'SET_USER_DATA',
-    payload
+  type: "SET_USER_DATA",
+  payload
 });
 
 export const getUserData = () => dispatch => {
-    const { category, dataUser} = generateData();
+  const { category, dataUser } = generateData();
 
-    dispatch(setCategoryUser(category));
-    dispatch(setDataUser(dataUser));
+  dispatch(setCategoryUser(category));
+  dispatch(setDataUser(dataUser));
 };
 
 export const setCommentsData = payload => ({

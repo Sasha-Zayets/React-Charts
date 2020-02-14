@@ -1,15 +1,16 @@
 import React from "react";
-import { connect } from 'react-redux';
-import { getCommentsData } from '../../store/actions';
+import { connect } from "react-redux";
+import propTypes from "prop-types";
+import { getCommentsData } from "../../store/actions";
 import Chart from "../../components/Chart/Chart";
-import HomeLink from '../../components/HomeLink/HomeLink';
+import HomeLink from "../../components/HomeLink/HomeLink";
 import { settings } from "./settingsChart";
 import "./chart.css";
 
 class ChartComments extends React.Component {
   componentDidMount() {
     this.props.generateData();
-  }  
+  }
 
   render() {
     const { data, categories, generateData } = this.props;
@@ -33,13 +34,23 @@ class ChartComments extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+ChartComments.propTypes = {
+  data: propTypes.array,
+  categories: propTypes.array
+};
+
+ChartComments.defaultProps = {
+  data: [],
+  categories: []
+};
+
+const mapStateToProps = state => ({
   data: state.commentsData,
   categories: state.commentsCategories
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  generateData: () => dispatch(getCommentsData()),
+const mapDispatchToProps = dispatch => ({
+  generateData: () => dispatch(getCommentsData())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChartComments);

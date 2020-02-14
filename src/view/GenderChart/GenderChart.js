@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import propTypes from "prop-types";
 import HomeLink from "../../components/HomeLink/HomeLink";
 import Chart from "../../components/Chart/Chart";
 import { options } from "./optionsChart";
@@ -30,6 +31,16 @@ class GenderChart extends React.Component {
     );
   }
 }
+
+GenderChart.propTypes = {
+  userCategory: propTypes.array,
+  userData: propTypes.array
+};
+
+GenderChart.defaultProps = {
+  userCategory: [],
+  userData: []
+};
 
 const mapStateToProps = state => ({
   userCategory: state.userCategory,
