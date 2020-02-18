@@ -1,10 +1,8 @@
 import { randomNumber } from "./randomNumber";
 
 export const generateCommentsData = data => {
-  const result = [];
-
-  data.forEach(item => {
-    result.push(item);
+  const result = data.map(item => {
+    return item;
   });
 
   return [
@@ -42,8 +40,7 @@ export const randomCategories = count => {
 export const randomDate = () => {
   const day = randomNumber(1, 30);
   const mouth = randomNumber(1, 12);
-  const year = randomNumber(1, 20);
-  const valueYear = `20${year >= 10 ? year : "0" + year}`;
+  const year = randomNumber(2000, 2020);
 
-  return `${day}.${mouth}.${valueYear}`;
+  return `${day}.${mouth}.${year}`;
 };
