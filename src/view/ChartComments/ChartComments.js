@@ -7,32 +7,24 @@ import HomeLink from "../../components/HomeLink/HomeLink";
 import { settings } from "./settingsChart";
 import "./chart.css";
 
-class ChartComments extends React.Component {
-  componentDidMount() {
-    this.props.generateData();
-  }
-
-  render() {
-    const { data, categories, generateData } = this.props;
-
-    return (
-      <>
-        <Chart
-          settings={settings}
-          categories={categories}
-          data={data}
-          className="chart-comments"
-        />
-        <button className="generate-button" onClick={generateData}>
-          Generate data
-        </button>
-        <div className="back-block">
-          <HomeLink />
-        </div>
-      </>
-    );
-  }
-}
+const ChartComments = ({ data, categories, generateData }) => {
+  return (
+    <>
+      <Chart
+        settings={settings}
+        categories={categories}
+        data={data}
+        className="chart-comments"
+      />
+      <button className="generate-button" onClick={generateData}>
+        Generate data
+      </button>
+      <div className="back-block">
+        <HomeLink />
+      </div>
+    </>
+  );
+};
 
 ChartComments.propTypes = {
   data: propTypes.array,

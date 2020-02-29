@@ -1,36 +1,36 @@
 import { randomNumber } from "./randomNumber";
 
 export const generateData = () => {
-  const userAge = generateUserAge(20); // generate random user
-  let resultAllUserAge = [];
+  const users = generateUserAge(20); // generate random user
+  let allUserAge = [];
 
-  userAge.forEach(user => {
-    resultAllUserAge.push(user.age);
+  users.forEach(user => {
+    allUserAge.push(user.age);
   });
 
-  // max Age
-  const maxNumber = maxNumberArray(resultAllUserAge);
+  const maxAge = maxNumberArray(allUserAge);
 
   return {
-    category: generateAgeCategory(10, maxNumber),
-    dataUser: generateUserCountAge(userAge, maxNumber)
+    category: generateAgeCategory(10, maxAge),
+    dataUser: generateUserCountAge(users, maxAge)
   };
 };
 
 export const generateAgeCategory = (start, maxNumber) => {
-  const count = Math.floor(maxNumber / 10);
+  const iteration = Math.round(maxNumber / 10);
   let category = [];
-  let test = start;
+  let startCategory = start;
 
-  for (let i = 1; i <= count; i++) {
+  for (let i = 1; i <= iteration; i++) {
     const nextAge = (i + 1) * 10;
 
-    if (i === count) {
-      category.push(`${test}+`);
+    if (i === iteration) {
+      category.push(`${startCategory}+`);
     } else {
-      category.push(`${test}-${nextAge}`);
+      category.push(`${startCategory}-${nextAge}`);
     }
-    test += 10;
+
+    startCategory += 10;
   }
 
   return category;
@@ -88,24 +88,17 @@ export const maxNumberArray = (result = []) => {
 };
 
 export const generateUserAge = count => {
-  let userAge = [];
-  let i = 0;
+  let users = [];
 
-  while (i < count) {
-    const genderNumber = randomNumber(0, 2);
-    if (genderNumber === 0) {
-      userAge.push({
-        name: "woman",
-        age: randomNumber(10, 30)
-      });
-    } else {
-      userAge.push({
-        name: "man",
-        age: randomNumber(10, 30)
-      });
-    }
-    i++;
+  for(let i = 0; i < count; i++) {
+    const gender = randomNumber(0, 2); // man or woman
+
+    users.push({
+      age: randomNumber(10, 30)
+    });
+
+    gender === 0 ? users[i].name = 'woman' : users[i].name = 'man'
   }
 
-  return userAge;
+  return users;
 };

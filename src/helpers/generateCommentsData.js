@@ -15,13 +15,11 @@ export const generateCommentsData = data => {
 
 export const randomData = count => {
   let data = [];
-  let iteration = 0;
 
-  while (iteration < count) {
+  for(let i = 0; i < count; i++) {
     data.push(randomNumber(0, 20));
-    iteration++;
   }
-
+ 
   return data;
 };
 

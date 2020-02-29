@@ -7,34 +7,30 @@ import { options } from "./optionsChart";
 import { getUserData } from "../../store/actions";
 import "./gender-chart.css";
 
-class GenderChart extends React.Component {
-  componentDidMount() {
-    this.props.getUserData();
-  }
-
-  render() {
-    const { userCategory, userData } = this.props;
-
-    return (
-      <>
-        <div className="chart-bars">
-          <Chart
-            type="bar"
-            settings={options}
-            data={userData}
-            categories={userCategory}
-            className="chart-bar"
-          />
-          <HomeLink />
-        </div>
-      </>
-    );
-  }
-}
+const GenderChart = ({ userCategory, userData, getUserData }) => {
+  return (
+    <>
+      <div className="chart-bars">
+        <Chart
+          type="bar"
+          settings={options}
+          data={userData}
+          categories={userCategory}
+          className="chart-bar"
+        />
+        <button className="generate-button" onClick={getUserData}>
+          Generate data
+        </button>
+        <HomeLink />
+      </div>
+    </>
+  );
+};
 
 GenderChart.propTypes = {
   userCategory: propTypes.array,
-  userData: propTypes.array
+  userData: propTypes.array,
+  getUserData: propTypes.func
 };
 
 GenderChart.defaultProps = {
